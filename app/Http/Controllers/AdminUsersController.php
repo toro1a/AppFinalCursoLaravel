@@ -26,7 +26,10 @@ class AdminUsersController extends Controller
 
     public function edit($id){
 
+        $user = User::findOrFail($id);
+        $roles = Role::all();
 
+        return view('admin.users.edit', compact('user'),compact('roles'));
     }
 
     public function destroy($id){
@@ -43,13 +46,14 @@ class AdminUsersController extends Controller
         if($archivo=$request->file('foto')){
 
             $nombre=$archivo->getClientOriginalName();
-            $archivo->move(storage_path('app').'/public/uploads/', $nombre);
+            $archivo->move(storage_path('app').'/public/uploads/userpic', $nombre);
             $entrada['foto'] = $nombre;
 
         }
 
+        $entrada['password'] = bcrypt($request->password); 
         User::create($entrada);
-
+        
         return redirect('/admin/users');
     }
 }

@@ -11,6 +11,7 @@
 
         <tr>
 
+            <th>Foto</th>
             <th>Nombre</th>
             <th>Rol</th>
             <th>Email</th>
@@ -25,8 +26,9 @@
             
                 <tr>
 
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->role_id}}</td>
+                    <td><img src="/storage/uploads/userpic/{{$user->foto}}" width="150"/></td>
+                    <td><a href ="{{route('adminUserEdit', $user->id)}}">{{$user->name}}</a></td>
+                    <td>{{$user->}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->created_at}}</td>
                     <td>{{$user->updated_at}}</td>

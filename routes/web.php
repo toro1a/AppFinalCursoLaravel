@@ -20,7 +20,9 @@ Route::get('/', function () {
 
 Route::get('/admin/users',[AdminUsersController::class, 'index'])->name('adminControl');
 Route::get('/admin/users/create',[AdminUsersController::class, 'create'])->name('adminUserCreate');
+Route::get('/admin/users/{id}/edit',[AdminUsersController::class, 'edit'])->name('adminUserEdit');
 Route::post('/admin/users/store',[AdminUsersController::class, 'store'])->name('adminUserStore');
+//Route::post('/admin/users/store',[AdminUsersController::class, 'store'])->name('adminUserStore');
 
 Auth::routes();
 
